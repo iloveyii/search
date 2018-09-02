@@ -45,12 +45,11 @@ const sagaMiddleware = createSagaMiddleware();
 /**
  * Store enhancers, devToolsExtensions
  */
-const allStoreEnhancers = compose(
+const allStoreEnhancers = (
     applyMiddleware(
         thunk,
         sagaMiddleware,
-        logger),
-    window.devToolsExtension && window.devToolsExtension()
+        logger)
 );
 
 // # 04

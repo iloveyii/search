@@ -8,7 +8,7 @@ const Item = ({item}) => {
 
     return(
         <div>
-            <p className="text-success text-left">
+            <div className="text-success text-left">
                 {
                     Object.keys(item).map((key, i)=>{
                         return(
@@ -23,7 +23,7 @@ const Item = ({item}) => {
                     })
                 }
 
-            </p>
+            </div>
         </div>
     )
 };

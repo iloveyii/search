@@ -13,7 +13,6 @@ export const searchStartSuccessAction = search => ({
 });
 
 export const searchStartFailAction = serverErrors => {
-    console.log('Inside searchStartFailAction', serverErrors);
     return {
         type: SEARCH_START_FAIL,
         serverErrors

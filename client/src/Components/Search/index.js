@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import {searchStartAction} from '../../Actions/SearchActions';
-import Errors from '../Alerts/Errors';
 import List from './List';
 
 
@@ -11,6 +10,7 @@ export class Index extends React.Component {
         super(props);
         this.state = {data: {}, serverErrors: {}};
         this.handleOnKeyUp = this.handleOnKeyUp.bind(this);
+        this.startSearch = this.startSearch.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -29,12 +29,17 @@ export class Index extends React.Component {
             data: {...this.state.data, [e.target.name]: e.target.value}
         });
         const keyCode = e.keyCode ? e.keyCode : e.which;
-        console.log('key', keyCode);
         if(this.state.data.search && this.state.data.search.length > 3 && keyCode === 13) {
             this.props.searchStartAction({search: this.state.data.search});
-            // e.target.value = '';
         }
         return false;
+    }
+
+    startSearch(e) {
+        e.preventDefault();
+        if(this.search.value && this.search.value.length > 3 ) {
+            this.props.searchStartAction({search: this.search.value});
+        }
     }
 
     render() {
@@ -63,7 +68,7 @@ export class Index extends React.Component {
                                 </div>
                                 <div style={{flex: 2}}>
                                     <div className="form-group">
-                                        <button type="submit" className="btn btn-primary btn-block"> Search </button>
+                                        <button type="button" onClick={this.startSearch}  className="btn btn-primary btn-block"> Search </button>
                                     </div>
                                 </div>
                             </div>

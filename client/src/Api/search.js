@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const SERVER = 'http://localhost:9090/index.php';
+const SERVER = 'http://searchbe.softhem.se/index.php';
 
 export default {
     search : {
